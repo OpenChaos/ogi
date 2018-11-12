@@ -38,3 +38,4 @@ temp/*
 *.sock
 vendor/**
 go-tasks.pkg
+out/**

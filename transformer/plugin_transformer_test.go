@@ -6,7 +6,7 @@ import (
 	"github.com/abhishekkr/gol/golenv"
 	logger "github.com/OpenChaos/ogi/logger"
 
-	"github.com/bouk/monkey"
+	"bou.ke/monkey"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/bouk/monkey"
+	"bou.ke/monkey"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stretchr/testify/assert"
 

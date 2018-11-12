@@ -6,7 +6,7 @@ import (
 	kafka "github.com/confluentinc/confluent-kafka-go/kafka"
 
 	"github.com/abhishekkr/gol/golerror"
-	"github.com/bouk/monkey"
+	"bou.ke/monkey"
 	"github.com/stretchr/testify/assert"
 
 	logger "github.com/OpenChaos/ogi/logger"

@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/abhishekkr/gol/golerror"
-	"github.com/bouk/monkey"
+	"bou.ke/monkey"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stretchr/testify/assert"
 

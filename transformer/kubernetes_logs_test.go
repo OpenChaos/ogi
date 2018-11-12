@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/bouk/monkey"
+	"bou.ke/monkey"
 	"github.com/stretchr/testify/assert"
 
 	ogiproducer "github.com/OpenChaos/ogi/producer"
