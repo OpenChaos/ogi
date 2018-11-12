@@ -7,7 +7,7 @@ import (
 
 	"github.com/abhishekkr/gol/golenv"
 
-	ogitransformer "github.com/gojekfarm/ogi/transformer"
+	ogitransformer "github.com/OpenChaos/ogi/transformer"
 )
 
 var (

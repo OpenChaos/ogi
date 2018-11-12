@@ -57,4 +57,4 @@ build-test-plugins: build-deps
 		go build -o "../producer-bad.so" -buildmode=plugin . ; cd -
 
 test: build-test-plugins
-	go test -gcflags=-l github.com/gojekfarm/ogi/consumer github.com/gojekfarm/ogi/transformer github.com/gojekfarm/ogi/producer
+	go test -gcflags=-l github.com/OpenChaos/ogi/consumer github.com/OpenChaos/ogi/transformer github.com/OpenChaos/ogi/producer

@@ -5,8 +5,8 @@ import (
 
 	"github.com/abhishekkr/gol/golenv"
 
-	instrumentation "github.com/gojekfarm/ogi/instrumentation"
-	logger "github.com/gojekfarm/ogi/logger"
+	instrumentation "github.com/OpenChaos/ogi/instrumentation"
+	logger "github.com/OpenChaos/ogi/logger"
 )
 
 type Consumer interface {

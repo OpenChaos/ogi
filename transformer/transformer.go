@@ -5,9 +5,9 @@ import (
 
 	"github.com/abhishekkr/gol/golenv"
 
-	"github.com/gojekfarm/ogi/instrumentation"
+	"github.com/OpenChaos/ogi/instrumentation"
 
-	logger "github.com/gojekfarm/ogi/logger"
+	logger "github.com/OpenChaos/ogi/logger"
 )
 
 type Transformer interface {

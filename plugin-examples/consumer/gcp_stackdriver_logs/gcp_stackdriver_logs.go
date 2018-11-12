@@ -12,9 +12,9 @@ import (
 	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 
-	instrumentation "github.com/gojekfarm/ogi/instrumentation"
-	logger "github.com/gojekfarm/ogi/logger"
-	ogiproducer "github.com/gojekfarm/ogi/producer"
+	instrumentation "github.com/OpenChaos/ogi/instrumentation"
+	logger "github.com/OpenChaos/ogi/logger"
+	ogiproducer "github.com/OpenChaos/ogi/producer"
 )
 
 type GCPStackdriverLogsConsumer struct {

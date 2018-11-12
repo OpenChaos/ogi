@@ -3,8 +3,8 @@ package main
 import (
 	"strings"
 
-	logger "github.com/gojekfarm/ogi/logger"
-	ogiproducer "github.com/gojekfarm/ogi/producer"
+	logger "github.com/OpenChaos/ogi/logger"
+	ogiproducer "github.com/OpenChaos/ogi/producer"
 )
 
 type MessageLog struct {

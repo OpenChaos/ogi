@@ -1,7 +1,7 @@
 package main
 
 import (
-	ogiproducer "github.com/gojekfarm/ogi/producer"
+	ogiproducer "github.com/OpenChaos/ogi/producer"
 )
 
 type TestTransformerLog struct {
