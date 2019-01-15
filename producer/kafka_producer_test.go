@@ -79,7 +79,6 @@ func TestKafkaClose(t *testing.T) {
 		guard.Unpatch()
 		defer guard.Restore()
 		guardB = true
-		return
 	})
 
 	k.Close()
@@ -100,7 +99,6 @@ func TestKafkaGetMetadataSuccessForEmptyMetadata(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	kguard = monkey.Patch((*kafka.Producer).GetMetadata, func(*kafka.Producer, *string, bool, int) (*kafka.Metadata, error) {
 		kguard.Unpatch()
@@ -128,7 +126,6 @@ func TestKafkaGetMetadataSuccessForSomeMetadata(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	kguard = monkey.Patch((*kafka.Producer).GetMetadata, func(*kafka.Producer, *string, bool, int) (*kafka.Metadata, error) {
 		kguard.Unpatch()
@@ -161,7 +158,6 @@ func TestKafkaGetMetadataFailure(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	kguard = monkey.Patch((*kafka.Producer).GetMetadata, func(*kafka.Producer, *string, bool, int) (*kafka.Metadata, error) {
 		kguard.Unpatch()
@@ -195,7 +191,6 @@ func TestKafkaGetPartitionNumberForValidPartitionCount(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 
 	partitionNum := k.GetPartitionNumber("some", "what")
@@ -218,7 +213,6 @@ func TestKafkaGetPartitionNumberForMissingPartitionCount(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	kguard = monkey.Patch((*Kafka).GetMetadata, func(_k *Kafka) {
 		kguard.Unpatch()
@@ -249,7 +243,6 @@ func TestKafkaGetPartitionNumberForZeroPartitionCount(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	kguard = monkey.Patch((*Kafka).GetMetadata, func(_k *Kafka) {
 		kguard.Unpatch()

@@ -11,7 +11,6 @@ type MockConsumer struct {
 
 func (k *MockConsumer) Consume() {
 	k.Mock.Called()
-	return
 }
 
 func NewMockConsumer() Consumer {

@@ -70,7 +70,7 @@ func (k *Kafka) EventHandler() {
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
 
 	run := true
-	for run == true {
+	for run {
 		select {
 		case sig := <-sigchan:
 			logger.Errorf("Caught signal %v: terminating\n", sig)

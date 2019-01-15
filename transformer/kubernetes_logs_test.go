@@ -68,7 +68,6 @@ func TestKubernetesKafkaLogTransformSuccess(t *testing.T) {
 		defer guard.Restore()
 		guardB = true
 		guardMessage, guardKey, guardTopic = string(message), message_key, topic
-		return
 	})
 
 	kkl := KubernetesKafkaLog{}
@@ -81,6 +80,7 @@ func TestKubernetesKafkaLogTransformSuccess(t *testing.T) {
 
 	assert.Equal(t, "svc-123-abc", guardKey)
 	assert.Equal(t, "mysvc", guardTopic)
+	assert.True(t, guardB)
 }
 
 func TestKubernetesKafkaLogTransformUnmarshallError(t *testing.T) {

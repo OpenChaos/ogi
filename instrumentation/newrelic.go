@@ -30,7 +30,6 @@ func init() {
 	instrumentationCtx = &NewrelicCtx{
 		NewrelicApp: newrelicApp,
 	}
-	return
 }
 
 func StartTransaction(txn string, w http.ResponseWriter, r *http.Request) newrelic.Transaction {

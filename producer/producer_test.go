@@ -36,7 +36,6 @@ func TestNewProducer(t *testing.T) {
 		guard.Unpatch()
 		defer guard.Restore()
 		guardB = true
-		return
 	})
 
 	NewProducer()
@@ -59,7 +58,6 @@ func TestProduce(t *testing.T) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
 		nrEndB = true
-		return
 	})
 	producerGuard = monkey.Patch(NewProducer, func() Producer {
 		producerGuard.Unpatch()

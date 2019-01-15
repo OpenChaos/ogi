@@ -57,7 +57,6 @@ func TestConsume(t *testing.T) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
 		nrEndB = true
-		return
 	})
 	mockGuard = monkey.Patch(NewMockConsumer, func() Consumer {
 		mockGuard.Unpatch()

@@ -60,7 +60,6 @@ func TestTransformSuccess(t *testing.T) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
 		nrEndB = true
-		return
 	})
 	guard = monkey.Patch((*KubernetesKafkaLog).Transform, func(*KubernetesKafkaLog, []byte) error {
 		guard.Unpatch()
@@ -72,7 +71,6 @@ func TestTransformSuccess(t *testing.T) {
 		logrguard.Unpatch()
 		defer logrguard.Restore()
 		logrguardB = true
-		return
 	})
 
 	Transform([]byte("{}"))
@@ -95,7 +93,6 @@ func TestTransformFailure(t *testing.T) {
 	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEnd.Unpatch()
 		defer nrEnd.Restore()
-		return
 	})
 	guard = monkey.Patch((*KubernetesKafkaLog).Transform, func(*KubernetesKafkaLog, []byte) error {
 		guard.Unpatch()
@@ -107,7 +104,6 @@ func TestTransformFailure(t *testing.T) {
 		logrguard.Unpatch()
 		defer logrguard.Restore()
 		logrguardB = true
-		return
 	})
 
 	Transform([]byte("{}"))

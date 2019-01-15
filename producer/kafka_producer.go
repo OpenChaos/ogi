@@ -25,7 +25,6 @@ func (k *Kafka) NewProducer() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	return
 }
 
 func (k *Kafka) Close() {
@@ -41,7 +40,7 @@ func (k *Kafka) GetMetadata() {
 		return
 	}
 	k.PartitionCounts = make(map[string]int, len(metadata.Topics))
-	for topic, _ := range metadata.Topics {
+	for topic := range metadata.Topics {
 		k.PartitionCounts[topic] = len(metadata.Topics[topic].Partitions)
 	}
 }
@@ -96,7 +95,7 @@ func (k *Kafka) ProduceMessage(topic string, message []byte, partitionNumber int
 		Value: message}
 
 	// wait for delivery report goroutine to finish
-	_ = <-doneChan
+	<-doneChan
 }
 
 func (k *Kafka) Produce(topic string, message []byte, messageKey string) {
