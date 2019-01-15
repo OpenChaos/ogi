@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/abhishekkr/gol/golerror"
 	"bou.ke/monkey"
+	"github.com/abhishekkr/gol/golerror"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stretchr/testify/assert"
 
@@ -37,7 +37,6 @@ func TestValdiateConfig(t *testing.T) {
 		defer guard.Restore()
 
 		panic("mocked")
-		return
 	})
 
 	setTestConfig()

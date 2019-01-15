@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/abhishekkr/gol/golerror"
 	"bou.ke/monkey"
+	"github.com/abhishekkr/gol/golerror"
 	kafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	newrelic "github.com/newrelic/go-agent"
 	"github.com/stretchr/testify/assert"

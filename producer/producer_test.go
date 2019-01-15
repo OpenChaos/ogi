@@ -19,7 +19,6 @@ func TestValdiateConfig(t *testing.T) {
 		defer guard.Restore()
 
 		panic("mocked")
-		return
 	})
 
 	setTestConfig()

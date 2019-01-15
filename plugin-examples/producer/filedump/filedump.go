@@ -5,8 +5,8 @@ import (
 	"os"
 	"path"
 
-	"github.com/abhishekkr/gol/golenv"
 	logger "github.com/OpenChaos/ogi/logger"
+	"github.com/abhishekkr/gol/golenv"
 )
 
 type Filedump struct {

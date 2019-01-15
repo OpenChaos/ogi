@@ -5,8 +5,8 @@ import (
 
 	kafka "github.com/confluentinc/confluent-kafka-go/kafka"
 
-	"github.com/abhishekkr/gol/golerror"
 	"bou.ke/monkey"
+	"github.com/abhishekkr/gol/golerror"
 	"github.com/stretchr/testify/assert"
 
 	logger "github.com/OpenChaos/ogi/logger"
@@ -23,7 +23,6 @@ func TestKafkaConfigureWithValidConfig(t *testing.T) {
 		defer guard.Restore()
 		guardB = true
 		panic("mocked")
-		return
 	})
 
 	assert.NotPanics(t, func() { k.Configure() }, "mocked")

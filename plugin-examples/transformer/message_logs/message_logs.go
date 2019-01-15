@@ -21,7 +21,7 @@ func init() {
 }
 
 func (msgLog *MessageLog) Transform(msg string) (err error) {
-	logger.Infoln("message recieved is", msg)
+	logger.Infoln("message received is", msg)
 	msgTokens := strings.Split(msg, ",")
 
 	if len(msgTokens) < 3 {

@@ -3,9 +3,9 @@ package ogiproducer
 import (
 	"fmt"
 
-	"github.com/abhishekkr/gol/golenv"
 	"github.com/OpenChaos/ogi/instrumentation"
 	logger "github.com/OpenChaos/ogi/logger"
+	"github.com/abhishekkr/gol/golenv"
 )
 
 type Producer interface {

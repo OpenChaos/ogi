@@ -4,9 +4,9 @@ import (
 	"path"
 	"plugin"
 
-	"github.com/abhishekkr/gol/golenv"
 	instrumentation "github.com/OpenChaos/ogi/instrumentation"
 	logger "github.com/OpenChaos/ogi/logger"
+	"github.com/abhishekkr/gol/golenv"
 )
 
 type ConsumerPlugin struct {

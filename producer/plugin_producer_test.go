@@ -3,8 +3,8 @@ package ogiproducer
 import (
 	"testing"
 
-	"github.com/abhishekkr/gol/golenv"
 	logger "github.com/OpenChaos/ogi/logger"
+	"github.com/abhishekkr/gol/golenv"
 
 	"bou.ke/monkey"
 	"github.com/stretchr/testify/assert"
