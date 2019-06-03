@@ -9,26 +9,7 @@ git clone https://github.com/OpenChaos/kafka-ogi
 ```
 
 
-* fetch dependency manager
-
-```
-go get -u github.com/golang/dep/cmd/dep
-
-## or
-
-make setup
-```
-
-
-* fetch dependencies
-
-```
-dep ensure
-
-## or
-
-make build-deps
-```
+* fetch dependencies: uses go modules `GO111MODULE=on`
 
 
 * prepare environment config file
@@ -42,7 +23,7 @@ cp env.sample env
 * run tests
 
 ```
-make build-deps ; source tests/tests-env.cfg ; make test
+source tests/tests-env.cfg ; make test
 ```
 
 ---
