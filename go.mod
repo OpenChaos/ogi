@@ -3,7 +3,7 @@ module github.com/OpenChaos/ogi
 require (
 	bou.ke/monkey v0.0.0-20180914095644-e8ac0cba3b42
 	cloud.google.com/go v0.32.0
-	github.com/abhishekkr/gol v0.0.0-20181112012523-43c6a0aaa16d
+	github.com/abhishekkr/gol v0.0.0-20190521150739-02d651656040
 	github.com/bouk/monkey v1.0.0
 	github.com/confluentinc/confluent-kafka-go v0.11.6
 	github.com/davecgh/go-spew v1.1.1
@@ -15,6 +15,8 @@ require (
 	github.com/konsorten/go-windows-terminal-sequences v1.0.1
 	github.com/newrelic/go-agent v1.11.0
 	github.com/pmezard/go-difflib v1.0.0
+	github.com/prometheus/client_golang v0.8.0
+	github.com/pseidemann/finish v0.0.0-20190122212907-385f9851b7c7
 	github.com/sirupsen/logrus v1.2.0
 	github.com/stretchr/objx v0.1.1
 	github.com/stretchr/testify v1.2.2

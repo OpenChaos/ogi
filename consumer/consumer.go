@@ -26,6 +26,7 @@ var (
 
 	consumerMap = map[string]NewConsumerFunc{
 		"confluent-kafka": NewConfluentKafka,
+		"http-api":        NewHttpApiConsumer,
 		"plugin":          NewConsumerPlugin,
 	}
 )
