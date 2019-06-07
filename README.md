@@ -28,9 +28,11 @@ This also gives capability to write a producer sending output to more than one o
 
 ---
 
-* [design in detail](./docs/design.md)
+* [available constructs](./docs/available-constructs.md) lists available consumer, transformer and producer
 
-* [in-built workflows available](./docs/types.md)
+* [design](./docs/design.md) details the internal structure
+
+* [example workflows available](./docs/example-workflows.md)
 
 ---
 
