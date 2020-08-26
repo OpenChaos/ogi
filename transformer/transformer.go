@@ -17,11 +17,11 @@ type Transformer interface {
 type NewTransformer func() Transformer
 
 var (
-	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "kubernetes-kafka-log")
+	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "transparent")
 
 	transformerMap = map[string]NewTransformer{
-		"kubernetes-kafka-log": NewKubernetesKafkaLog,
-		"plugin":               NewTransformerPlugin,
+		"transparent": NewTransparentTransformer,
+		"plugin":      NewTransformerPlugin,
 	}
 )
 
@@ -31,9 +31,6 @@ func init() {
 
 func validateConfig() {
 	var missingVariables string
-	if KubernetesTopicLabel == "" {
-		logger.Warn("Missing Env Config: 'PRODUCER_KUBERNETES_TOPIC_LABEL', can't use Kubernetes Label based transformers")
-	}
 
 	if TransformerType == "" {
 		missingVariables = fmt.Sprintf("%s TRANSFORMER_TYPE", missingVariables)

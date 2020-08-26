@@ -16,12 +16,11 @@ type Producer interface {
 type NewProducerFunc func() Producer
 
 var (
-	BootstrapServers = golenv.OverrideIfEnv("PRODUCER_BOOTSTRAP_SERVERS", "")
-	ProducerType     = golenv.OverrideIfEnv("PRODUCER_TYPE", "confluent-kafka")
+	ProducerType = golenv.OverrideIfEnv("PRODUCER_TYPE", "echo")
 
 	producerMap = map[string]NewProducerFunc{
-		"confluent-kafka": NewConfluentKafka,
-		"plugin":          NewProducerPlugin,
+		"echo":   NewEchoProducer,
+		"plugin": NewProducerPlugin,
 	}
 )
 
@@ -31,9 +30,6 @@ func init() {
 
 func validateConfig() {
 	var missingVariables string
-	if BootstrapServers == "" {
-		logger.Warn("Missing Env Config: 'PRODUCER_BOOTSTRAP_SERVERS', can't use Confluent Kafka Producer")
-	}
 
 	if ProducerType == "" {
 		missingVariables = fmt.Sprintf("%s PRODUCER_TYPE", missingVariables)
