@@ -1,8 +1,6 @@
 package ogiproducer
 
 import (
-	"fmt"
-
 	"github.com/OpenChaos/ogi/instrumentation"
 	logger "github.com/OpenChaos/ogi/logger"
 	"github.com/abhishekkr/gol/golenv"
@@ -23,22 +21,6 @@ var (
 		"plugin": NewProducerPlugin,
 	}
 )
-
-func init() {
-	validateConfig()
-}
-
-func validateConfig() {
-	var missingVariables string
-
-	if ProducerType == "" {
-		missingVariables = fmt.Sprintf("%s PRODUCER_TYPE", missingVariables)
-	}
-
-	if missingVariables != "" {
-		logger.Fatalf("Missing Env Config:%s", missingVariables)
-	}
-}
 
 func NewProducer() Producer {
 	return producerMap[ProducerType]()

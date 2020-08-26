@@ -4,7 +4,6 @@ import (
 	"github.com/abhishekkr/gol/golenv"
 
 	instrumentation "github.com/OpenChaos/ogi/instrumentation"
-	logger "github.com/OpenChaos/ogi/logger"
 )
 
 type Consumer interface {
@@ -21,24 +20,6 @@ var (
 		"plugin":     NewConsumerPlugin,
 	}
 )
-
-func init() {
-	validateConfig()
-}
-
-func validateConfig() {
-	var missingVariables string
-
-	if missingVariables != "" {
-		logger.Fatalf("Missing Env Config:%s", missingVariables)
-	}
-}
-
-func failIfError(err error) {
-	if err != nil {
-		logger.Fatal(err)
-	}
-}
 
 func Consume() {
 	txn := instrumentation.StartTransaction("consume_transaction", nil, nil)

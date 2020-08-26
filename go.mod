@@ -8,4 +8,5 @@ require (
 	github.com/newrelic/go-agent v3.8.1+incompatible
 	github.com/sirupsen/logrus v1.6.0
 	github.com/stretchr/testify v1.6.1
+	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 )

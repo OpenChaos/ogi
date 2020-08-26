@@ -1,24 +1,20 @@
 package main
 
-import (
-	ogiproducer "github.com/OpenChaos/ogi/producer"
-)
-
-type TestTransformerLog struct {
+type TestTransformer struct {
 }
 
 var (
-	p *TestTransformerLog
+	p *TestTransformer
 )
 
 func init() {
-	p = new(TestTransformerLog)
+	p = new(TestTransformer)
 }
 
-func (msgLog *TestTransformerLog) Transform(msg string, producer ogiproducer.Producer) (err error) {
+func (msgLog *TestTransformer) Transform(msg []byte) (err error) {
 	return
 }
 
-func Transform(msg string, producer ogiproducer.Producer) error {
-	return p.Transform(msg, producer)
+func Transform(msg []byte) error {
+	return p.Transform(msg)
 }

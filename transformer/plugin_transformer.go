@@ -1,7 +1,6 @@
 package ogitransformer
 
 import (
-	"fmt"
 	"path"
 	"plugin"
 
@@ -20,7 +19,6 @@ var (
 )
 
 func NewTransformerPlugin() Transformer {
-	fmt.Println(TransformerPluginPath)
 	p, err := plugin.Open(TransformerPluginPath)
 	if err != nil {
 		logger.Fatalf("Error reading plugin: %s", err)

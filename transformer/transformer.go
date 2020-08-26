@@ -1,8 +1,6 @@
 package ogitransformer
 
 import (
-	"fmt"
-
 	"github.com/abhishekkr/gol/golenv"
 
 	"github.com/OpenChaos/ogi/instrumentation"
@@ -24,22 +22,6 @@ var (
 		"plugin":      NewTransformerPlugin,
 	}
 )
-
-func init() {
-	validateConfig()
-}
-
-func validateConfig() {
-	var missingVariables string
-
-	if TransformerType == "" {
-		missingVariables = fmt.Sprintf("%s TRANSFORMER_TYPE", missingVariables)
-	}
-
-	if missingVariables != "" {
-		logger.Fatalf("Missing Env Config:%s", missingVariables)
-	}
-}
 
 func Transform(msg []byte) {
 	txn := instrumentation.StartTransaction("transform_transaction", nil, nil)

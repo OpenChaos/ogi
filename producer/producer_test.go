@@ -12,63 +12,50 @@ import (
 	logger "github.com/OpenChaos/ogi/logger"
 )
 
-func TestValdiateConfig(t *testing.T) {
-	var guard *monkey.PatchGuard
-	guard = monkey.Patch(logger.Fatalf, func(f string, p ...interface{}) {
-		guard.Unpatch()
-		defer guard.Restore()
+var (
+	countOfMockProducerProduceCalled = 0
+	countOfMockProducerCloseCalled   = 0
+)
 
-		panic("mocked")
-	})
+func init() {
+	logger.SetupLogger()
+}
 
-	setTestConfig()
-	assert.NotPanics(t, func() { validateConfig() })
-	unsetTestConfig()
-	assert.Panicsf(t, func() { validateConfig() }, "mocked")
+type MockProducer struct{}
+
+func (m *MockProducer) Close() {
+	countOfMockProducerCloseCalled += 1
+	return
+}
+func (m *MockProducer) Produce(t string, msg []byte, key string) {
+	countOfMockProducerProduceCalled += 1
+	return
 }
 
 func TestNewProducer(t *testing.T) {
-	setTestConfig()
-
-	var guard *monkey.PatchGuard
-	var guardB bool
-	guard = monkey.Patch((*Kafka).NewProducer, func(*Kafka) {
-		guard.Unpatch()
-		defer guard.Restore()
-		guardB = true
-	})
-
-	NewProducer()
-	assert.True(t, guardB)
+	echoProducer := NewProducer()
+	assert.Equal(t, &Echo{}, echoProducer)
 }
 
 func TestProduce(t *testing.T) {
-	setTestConfig()
-
-	mp := &MockProducer{}
-	var nr, nrEnd, producerGuard *monkey.PatchGuard
 	var nrB, nrEndB bool
-	nr = monkey.Patch(instrumentation.StartTransaction, func(string, http.ResponseWriter, *http.Request) newrelic.Transaction {
-		nr.Unpatch()
-		defer nr.Restore()
+	mockProducer := &MockProducer{}
+	monkey.Patch(instrumentation.StartTransaction, func(string, http.ResponseWriter, *http.Request) newrelic.Transaction {
 		nrB = true
 		return nil
 	})
-	nrEnd = monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
-		nrEnd.Unpatch()
-		defer nrEnd.Restore()
+	monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
 		nrEndB = true
 	})
-	producerGuard = monkey.Patch(NewProducer, func() Producer {
-		producerGuard.Unpatch()
-		defer producerGuard.Restore()
-		return mp
+	monkey.Patch(NewProducer, func() Producer {
+		return mockProducer
 	})
 
-	mp.On("Produce").Return()
-	mp.On("Close").Return()
-	Produce("topik", []byte{}, "key")
+	Produce("topik", []byte{}, "mykey")
 	assert.True(t, nrB)
 	assert.True(t, nrEndB)
-	mp.Mock.AssertExpectations(t)
+	assert.Equal(t, countOfMockProducerProduceCalled, 1)
+	assert.Equal(t, countOfMockProducerCloseCalled, 1)
+	countOfMockProducerProduceCalled = 0 // resetting
+	countOfMockProducerCloseCalled = 0   // resetting
 }
