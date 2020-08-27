@@ -2,6 +2,8 @@
 
 [![Go Report Card](https://goreportcard.com/badge/gojekfarm/ogi)](https://goreportcard.com/report/gojekfarm/ogi)
 
+**It is under a bit re-design. We are making the core thinner. Creating a home for stable plug-ins under [OpenChaos/ogi-plugin-umbrella](https://github.com/OpenChaos/ogi-plugin-umbrella) repo. Will add more details and override it.**
+
 
 utility to enable flexible [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) scenarios
 
