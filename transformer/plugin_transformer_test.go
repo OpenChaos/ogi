@@ -22,7 +22,7 @@ func TestNewTransformerPluginOnSuccess(t *testing.T) {
 	})
 
 	assert.NotPanics(t, func() { NewTransformerPlugin() })
-	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "kubernetes-kafka-log")
+	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "transparent")
 }
 
 func TestTransformerPluginOnPluginFuncMissing(t *testing.T) {
@@ -37,8 +37,7 @@ func TestTransformerPluginOnPluginFuncMissing(t *testing.T) {
 	})
 
 	assert.Panics(t, func() { NewTransformerPlugin() })
-	TransformerPluginPath = golenv.OverrideIfEnv("TRANSFORMER_PLUGIN_PATH", "")
-	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "kubernetes-kafka-log")
+	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "transparent")
 }
 
 func TestTransformerPluginOnPluginFileMissing(t *testing.T) {
@@ -53,6 +52,5 @@ func TestTransformerPluginOnPluginFileMissing(t *testing.T) {
 	})
 
 	assert.Panics(t, func() { NewTransformerPlugin() })
-	TransformerPluginPath = golenv.OverrideIfEnv("TRANSFORMER_PLUGIN_PATH", "")
-	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "kubernetes-kafka-log")
+	TransformerType = golenv.OverrideIfEnv("TRANSFORMER_TYPE", "transparent")
 }

@@ -39,3 +39,4 @@ temp/*
 vendor/**
 go-tasks.pkg
 out/**
+_temp/**

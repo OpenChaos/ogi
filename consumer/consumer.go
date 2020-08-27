@@ -1,12 +1,9 @@
 package ogiconsumer
 
 import (
-	"fmt"
-
 	"github.com/abhishekkr/gol/golenv"
 
 	instrumentation "github.com/OpenChaos/ogi/instrumentation"
-	logger "github.com/OpenChaos/ogi/logger"
 )
 
 type Consumer interface {
@@ -16,44 +13,13 @@ type Consumer interface {
 type NewConsumerFunc func() Consumer
 
 var (
-	BootstrapServers             = golenv.OverrideIfEnv("CONSUMER_BOOTSTRAP_SERVERS", "")
-	GroupId                      = golenv.OverrideIfEnv("CONSUMER_GROUP_ID", "")
-	SessionTimeoutMs             = golenv.OverrideIfEnv("CONSUMER_SESSION_TIMEOUT_MS", "6000")
-	GoEventsChannelEnable        = golenv.OverrideIfEnv("CONSUMER_GOEVENTS_CHANNEL_ENABLE", "true")
-	GoEventsChannelSize          = golenv.OverrideIfEnv("CONSUMER_GOEVENTS_CHANNEL_SIZE", "1000")
-	GoApplicationRebalanceEnable = golenv.OverrideIfEnv("CONSUMER_GO_APPLICATION_REBALANCE_ENABLE", "true")
-	ConsumerType                 = golenv.OverrideIfEnv("CONSUMER_TYPE", "confluent-kafka")
+	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "tcp-server")
 
 	consumerMap = map[string]NewConsumerFunc{
-		"confluent-kafka": NewConfluentKafka,
-		"http-api":        NewHttpApiConsumer,
-		"plugin":          NewConsumerPlugin,
+		"tcp-server": NewTCPServer,
+		"plugin":     NewConsumerPlugin,
 	}
 )
-
-func init() {
-	validateConfig()
-}
-
-func validateConfig() {
-	var missingVariables string
-	if BootstrapServers == "" {
-		missingVariables = fmt.Sprintf("%s CONSUMER_BOOTSTRAP_SERVERS", missingVariables)
-	}
-	if GroupId == "" {
-		missingVariables = fmt.Sprintf("%s CONSUMER_GROUP_ID", missingVariables)
-	}
-
-	if missingVariables != "" {
-		logger.Fatalf("Missing Env Config:%s", missingVariables)
-	}
-}
-
-func failIfError(err error) {
-	if err != nil {
-		logger.Fatal(err)
-	}
-}
 
 func Consume() {
 	txn := instrumentation.StartTransaction("consume_transaction", nil, nil)

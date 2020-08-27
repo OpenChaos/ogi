@@ -11,7 +11,8 @@ import (
 var ogilogger *logrus.Logger
 
 func SetupLogger() {
-	level, err := logrus.ParseLevel(golenv.OverrideIfEnv("LOG_LEVEL", "info"))
+	envLogLevel := golenv.OverrideIfEnv("LOG_LEVEL", "info")
+	level, err := logrus.ParseLevel(envLogLevel)
 	if err != nil {
 		log.Fatal(err)
 	}

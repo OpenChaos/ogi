@@ -24,7 +24,7 @@ func TestNewConsumerPluginOnSuccess(t *testing.T) {
 	})
 
 	assert.NotPanics(t, func() { NewConsumerPlugin() })
-	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "confluent-kafka")
+	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "tcp-server")
 }
 
 func TestConsumerPluginOnPluginFuncMissing(t *testing.T) {
@@ -41,7 +41,7 @@ func TestConsumerPluginOnPluginFuncMissing(t *testing.T) {
 
 	assert.Panics(t, func() { NewConsumerPlugin() })
 	ConsumerPluginPath = golenv.OverrideIfEnv("CONSUMER_PLUGIN_PATH", "")
-	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "confluent-kafka")
+	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "tcp-server")
 }
 
 func TestConsumerPluginOnPluginFileMissing(t *testing.T) {
@@ -58,5 +58,5 @@ func TestConsumerPluginOnPluginFileMissing(t *testing.T) {
 
 	assert.Panics(t, func() { NewConsumerPlugin() })
 	ConsumerPluginPath = golenv.OverrideIfEnv("CONSUMER_PLUGIN_PATH", "")
-	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "confluent-kafka")
+	ConsumerType = golenv.OverrideIfEnv("CONSUMER_TYPE", "tcp-server")
 }

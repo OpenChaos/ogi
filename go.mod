@@ -1,38 +1,12 @@
 module github.com/OpenChaos/ogi
 
+go 1.15
+
 require (
-	bou.ke/monkey v0.0.0-20180914095644-e8ac0cba3b42
-	cloud.google.com/go v0.32.0
-	github.com/abhishekkr/gol v0.0.0-20190521150739-02d651656040
-	github.com/bouk/monkey v1.0.0
-	github.com/confluentinc/confluent-kafka-go v0.11.6
-	github.com/davecgh/go-spew v1.1.1
-	github.com/golang/protobuf v1.2.0
-	github.com/google/pprof v0.0.0-20181026152656-fde099a545de
-	github.com/googleapis/gax-go v2.0.0+incompatible
-	github.com/gorilla/context v1.1.1
-	github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6
-	github.com/konsorten/go-windows-terminal-sequences v1.0.1
-	github.com/newrelic/go-agent v1.11.0
-	github.com/pmezard/go-difflib v1.0.0
-	github.com/prometheus/client_golang v0.8.0
-	github.com/pseidemann/finish v0.0.0-20190122212907-385f9851b7c7
-	github.com/sirupsen/logrus v1.2.0
-	github.com/stretchr/objx v0.1.1
-	github.com/stretchr/testify v1.2.2
-	go.opencensus.io v0.18.0
-	golang.org/x/arch v0.0.0-20180920145803-b19384d3c130
-	golang.org/x/blog v0.0.0-20181112150702-0d61c2b228e3
-	golang.org/x/crypto v0.0.0-20181106171534-e4dc69e5b2fd
-	golang.org/x/net v0.0.0-20181108082009-03003ca0c849
-	golang.org/x/oauth2 v0.0.0-20181106182150-f42d05182288
-	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
-	golang.org/x/sys v0.0.0-20181107165924-66b7b1311ac8
-	golang.org/x/text v0.3.0
-	golang.org/x/tour v0.0.0-20181109185121-df79fa323b80
-	google.golang.org/api v0.0.0-20181108001712-cfbc873f6b93
-	google.golang.org/appengine v1.3.0
-	google.golang.org/genproto v0.0.0-20181109154231-b5d43981345b
-	google.golang.org/grpc v1.16.0
-	gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+	bou.ke/monkey v1.0.2
+	github.com/abhishekkr/gol v0.0.0-20200110222216-0a64cea184c7
+	github.com/newrelic/go-agent v3.8.1+incompatible
+	github.com/sirupsen/logrus v1.6.0
+	github.com/stretchr/testify v1.6.1
+	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
 )
