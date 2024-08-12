@@ -4,10 +4,12 @@ go 1.15
 
 require (
 	bou.ke/monkey v1.0.2
+	github.com/gol-gol/golconv v0.0.0-20230302172921-7c155f24578e // indirect
 	github.com/gol-gol/golenv v0.0.0-20230302172901-210791b57f21
+	github.com/konsorten/go-windows-terminal-sequences v1.0.3 // indirect
 	github.com/newrelic/go-agent v3.8.1+incompatible
 	github.com/oklog/ulid/v2 v2.1.0
-	github.com/sirupsen/logrus v1.6.0
-	github.com/stretchr/testify v1.6.1
-	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
+	github.com/sirupsen/logrus v1.9.3
+	github.com/stretchr/testify v1.7.0
+	golang.org/x/sys v0.24.0 // indirect
 )
