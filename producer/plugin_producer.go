@@ -45,6 +45,6 @@ func (plugin *ProducerPlugin) Close() {
 	plugin.CloseFunc.(func())()
 }
 
-func (plugin *ProducerPlugin) Produce(msgid string, msg []byte) {
-	plugin.ProduceFunc.(func(string, []byte))(msgid, msg)
+func (plugin *ProducerPlugin) Produce(msgid string, msg []byte) ([]byte, error) {
+	return plugin.ProduceFunc.(func(string, []byte) ([]byte, error))(msgid, msg)
 }

@@ -23,7 +23,12 @@ var (
 )
 
 func (t *TCPServer) Transform(msgid, lyne string) {
-	ogitransformer.Transform(msgid, []byte(lyne))
+	msgB, err := ogitransformer.Transform(msgid, []byte(lyne))
+	if err != nil {
+		log.Println("[ERROR]", err.Error())
+	} else if len(msgB) > 0 {
+		log.Println("[RESPONSE]", string(msgB))
+	}
 }
 
 func (t *TCPServer) Start() {
