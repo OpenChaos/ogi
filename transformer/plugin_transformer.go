@@ -4,7 +4,7 @@ import (
 	"path"
 	"plugin"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 
 	logger "github.com/OpenChaos/ogi/logger"
 )

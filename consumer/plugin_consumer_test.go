@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	logger "github.com/OpenChaos/ogi/logger"
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 
 	"bou.ke/monkey"
 	"github.com/stretchr/testify/assert"

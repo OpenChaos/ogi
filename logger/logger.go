@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 	"github.com/sirupsen/logrus"
 )
 

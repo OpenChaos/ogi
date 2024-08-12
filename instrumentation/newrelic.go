@@ -3,7 +3,7 @@ package instrumentation
 import (
 	"net/http"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 	newrelic "github.com/newrelic/go-agent"
 
 	logger "github.com/OpenChaos/ogi/logger"

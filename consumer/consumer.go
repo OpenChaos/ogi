@@ -1,7 +1,7 @@
 package ogiconsumer
 
 import (
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 
 	instrumentation "github.com/OpenChaos/ogi/instrumentation"
 )

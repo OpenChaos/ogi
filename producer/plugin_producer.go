@@ -5,7 +5,7 @@ import (
 	"plugin"
 
 	logger "github.com/OpenChaos/ogi/logger"
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 )
 
 type ProducerPlugin struct {

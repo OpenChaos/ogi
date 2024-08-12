@@ -43,7 +43,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 
 	ogitransformer "github.com/OpenChaos/ogi/transformer"
 )
@@ -112,7 +112,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 )
 
 var (

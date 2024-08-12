@@ -6,7 +6,7 @@ import (
 
 	instrumentation "github.com/OpenChaos/ogi/instrumentation"
 	logger "github.com/OpenChaos/ogi/logger"
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 )
 
 type ConsumerPlugin struct {

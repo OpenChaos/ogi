@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abhishekkr/gol/golenv"
+	"github.com/gol-gol/golenv"
 
 	ogitransformer "github.com/OpenChaos/ogi/transformer"
 )
