@@ -11,6 +11,7 @@ import (
 	"github.com/gol-gol/golenv"
 	ulid "github.com/oklog/ulid/v2"
 
+	instrumentation "github.com/OpenChaos/ogi/instrumentation"
 	ogitransformer "github.com/OpenChaos/ogi/transformer"
 )
 
@@ -57,7 +58,11 @@ func (t *TCPServer) Start() {
 		}
 
 		msgid := ulid.Make().String()
+
+		txn := instrumentation.StartTransaction(msgid)
 		t.Transform(msgid, netData)
+		instrumentation.EndTransaction(&txn)
+
 		tym := time.Now()
 		response := msgid + ": " + tym.Format(time.RFC3339) + "\n"
 		c.Write([]byte(response))

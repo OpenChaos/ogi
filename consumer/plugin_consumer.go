@@ -36,7 +36,7 @@ func NewConsumerPlugin() Consumer {
 }
 
 func (plugin *ConsumerPlugin) Consume() {
-	txn := instrumentation.StartTransaction("event_kafka_message_transaction", nil, nil)
+	txn := instrumentation.StartTransaction(ConsumerPluginPath)
 	defer instrumentation.EndTransaction(&txn)
 	plugin.ConsumeFunc.(func())()
 }

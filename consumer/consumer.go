@@ -22,7 +22,7 @@ var (
 )
 
 func Consume() {
-	txn := instrumentation.StartTransaction("consume_transaction", nil, nil)
+	txn := instrumentation.StartTransaction("CONSUMER")
 	defer instrumentation.EndTransaction(&txn)
 
 	consumer := consumerMap[ConsumerType]()

@@ -1,14 +1,11 @@
 package ogiproducer
 
 import (
-	"net/http"
 	"testing"
 
 	"bou.ke/monkey"
-	newrelic "github.com/newrelic/go-agent"
 	"github.com/stretchr/testify/assert"
 
-	instrumentation "github.com/OpenChaos/ogi/instrumentation"
 	logger "github.com/OpenChaos/ogi/logger"
 )
 
@@ -27,9 +24,9 @@ func (m *MockProducer) Close() {
 	countOfMockProducerCloseCalled += 1
 	return
 }
-func (m *MockProducer) Produce(t string, msg []byte, key string) {
+func (m *MockProducer) Produce(msgid string, msg []byte) ([]byte, error) {
 	countOfMockProducerProduceCalled += 1
-	return
+	return []byte{}, nil
 }
 
 func TestNewProducer(t *testing.T) {
@@ -38,22 +35,14 @@ func TestNewProducer(t *testing.T) {
 }
 
 func TestProduce(t *testing.T) {
-	var nrB, nrEndB bool
 	mockProducer := &MockProducer{}
-	monkey.Patch(instrumentation.StartTransaction, func(string, http.ResponseWriter, *http.Request) newrelic.Transaction {
-		nrB = true
-		return nil
-	})
-	monkey.Patch(instrumentation.EndTransaction, func(*newrelic.Transaction) {
-		nrEndB = true
-	})
 	monkey.Patch(NewProducer, func() Producer {
 		return mockProducer
 	})
 
-	Produce("topik", []byte{}, "mykey")
-	assert.True(t, nrB)
-	assert.True(t, nrEndB)
+	_, e := Produce("ulid", []byte{})
+	assert.Equal(t, e, nil)
+
 	assert.Equal(t, countOfMockProducerProduceCalled, 1)
 	assert.Equal(t, countOfMockProducerCloseCalled, 1)
 	countOfMockProducerProduceCalled = 0 // resetting

@@ -2,8 +2,6 @@ package ogitransformer
 
 import (
 	"github.com/gol-gol/golenv"
-
-	"github.com/OpenChaos/ogi/instrumentation"
 )
 
 type Transformer interface {
@@ -22,9 +20,6 @@ var (
 )
 
 func Transform(msgid string, msg []byte) ([]byte, error) {
-	txn := instrumentation.StartTransaction("transform_transaction", nil, nil)
-	defer instrumentation.EndTransaction(&txn)
-
 	transformer := transformerMap[TransformerType]()
 	return transformer.Transform(msgid, msg)
 }
