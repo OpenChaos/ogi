@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gol-gol/golenv"
+	ulid "github.com/oklog/ulid/v2"
 
 	ogitransformer "github.com/OpenChaos/ogi/transformer"
 )
@@ -21,8 +22,8 @@ var (
 	tcpConsumerPort = golenv.OverrideIfEnv("OGI_TCP_CONSUMER_PORT", "8080")
 )
 
-func (t *TCPServer) Transform(lyne string) {
-	ogitransformer.Transform([]byte(lyne))
+func (t *TCPServer) Transform(msgid, lyne string) {
+	ogitransformer.Transform(msgid, []byte(lyne))
 }
 
 func (t *TCPServer) Start() {
@@ -45,15 +46,16 @@ func (t *TCPServer) Start() {
 			fmt.Println(err)
 			return
 		}
-		if strings.TrimSpace(string(netData)) == "exit" {
+		if strings.TrimSpace(netData) == "exit" {
 			fmt.Println("bye!")
 			return
 		}
 
-		t.Transform(string(netData))
-		t := time.Now()
-		myTime := t.Format(time.RFC3339) + "\n"
-		c.Write([]byte(myTime))
+		msgid := ulid.Make().String()
+		t.Transform(msgid, netData)
+		tym := time.Now()
+		response := msgid + ": " + tym.Format(time.RFC3339) + "\n"
+		c.Write([]byte(response))
 	}
 }
 

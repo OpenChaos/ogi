@@ -7,7 +7,7 @@ import (
 )
 
 type Producer interface {
-	Produce(string, []byte, string)
+	Produce(string, []byte)
 	Close()
 }
 
@@ -26,13 +26,13 @@ func NewProducer() Producer {
 	return producerMap[ProducerType]()
 }
 
-func Produce(topic string, message []byte, messageKey string) {
+func Produce(msgid string, msg []byte) {
 	txn := instrumentation.StartTransaction("produce_transaction", nil, nil)
 	defer instrumentation.EndTransaction(&txn)
 
 	producer := NewProducer()
 	defer producer.Close()
 
-	producer.Produce(topic, message, messageKey)
-	logger.Infof("topic '%s' message-key '%s'", topic, messageKey)
+	producer.Produce(msgid, msg)
+	logger.Infof("msg#[%s]", msgid)
 }

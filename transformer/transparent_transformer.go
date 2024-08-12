@@ -3,14 +3,13 @@ package ogitransformer
 import ogiproducer "github.com/OpenChaos/ogi/producer"
 
 type TransparentTransformer struct {
-	Topic string
 }
 
-func (t *TransparentTransformer) Transform(msg []byte) (err error) {
-	ogiproducer.Produce(t.Topic, msg, "")
+func (t *TransparentTransformer) Transform(msgid string, msg []byte) (err error) {
+	ogiproducer.Produce(msgid, msg)
 	return nil
 }
 
 func NewTransparentTransformer() Transformer {
-	return &TransparentTransformer{Topic: ""}
+	return &TransparentTransformer{}
 }

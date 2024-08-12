@@ -9,7 +9,7 @@ import (
 )
 
 type Transformer interface {
-	Transform([]byte) error
+	Transform(string, []byte) error
 }
 
 type NewTransformer func() Transformer
@@ -23,13 +23,13 @@ var (
 	}
 )
 
-func Transform(msg []byte) {
+func Transform(msgid string, msg []byte) {
 	txn := instrumentation.StartTransaction("transform_transaction", nil, nil)
 	defer instrumentation.EndTransaction(&txn)
 
 	transformer := transformerMap[TransformerType]()
-	if err := transformer.Transform(msg); err != nil {
-		// produce to dead-man-talking topic
+	if err := transformer.Transform(msgid, msg); err != nil {
+		// produce to dead-man-talking
 		logger.Warn(err)
 	}
 }
